@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-%\usepackage[ngerman]{babel}
+\usepackage[ngerman,english]{babel}
 \usepackage{lmodern}
 \usepackage{amsmath, amssymb, amstext, amsthm}
 \usepackage{makecell}
@@ -50,7 +50,29 @@
 			\hline
 			G		& \makecell[tr]{H \\ I}
 	    \end{tabular}
-    
+	    
+	\newpage
+	\section{Typography}\label{sec:typo}
+		\subsection{Quotes}
+			\textbf{English:}\\
+			\begin{otherlanguage}{english}
+				This is \glqq some quoted text\grqq. \\
+				This is ,,another quoted text''. \\
+				This "`also"'. \\
+				And some "<French quotes">. \\
+				And "quiet" very 'primitive'.
+			\end{otherlanguage}
+
+			\mbox{}\\
+			\textbf{German:}\\
+			\begin{otherlanguage}{ngerman}
+				This is \glqq some quoted text\grqq. \\
+				This is ,,another quoted text''. \\
+				This "`also"'. \\
+				And some "<French quotes">. \\
+				And "quiet" very 'primitive'.
+			\end{otherlanguage}
+
 
 
 \end{document}
