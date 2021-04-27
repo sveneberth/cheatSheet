@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amstext, amsthm}
+\usepackage{makecell}
+
+
+\title{\LaTeX~CheatCheat}
+\author{Sven Eberth}
+\date{\today}
+
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+
+    \section{Math}\label{sec:math}
+		\subsection{Symbols}
+			\subsubsection{Simple}
+		    \[ \mathbb{N R Z Q} \ldots \]
+		    \[ \mathcal{O}(n^2) \]
+		
+		    \subsubsection{via Commands}
+		    \newcommand{\N}[0]{\mathbb{N}}
+		    \newcommand{\R}[0]{\mathbb{R}}
+		    \newcommand{\Z}[0]{\mathbb{Z}}
+		    \newcommand{\Q}[0]{\mathbb{Q}}
+		    
+		    \newcommand{\bigO}[1]{$\mathcal{O}(#1)$}
+		
+		    \[ \N \R \Z \Q \ldots \]
+		    \begin{center}
+			    	\bigO{n^2}
+			\end{center}
+
+
+    \section{Table}\label{sec:table}
+		\subsection{Muliline Cells}
+		\ldots with package \textit{makecell}
+		
+		\begin{tabular}{cl}
+			A		& B  \\
+			\hline
+			C		& \makecell[tl]{D \\ E \\ F} \\
+			\hline
+			G		& \makecell[tr]{H \\ I}
+	    \end{tabular}
+    
+
+
+\end{document}
