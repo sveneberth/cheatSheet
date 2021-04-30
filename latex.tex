@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[a4paper, 11pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -6,20 +6,29 @@
 \usepackage{lmodern}
 \usepackage{amsmath, amssymb, amstext, amsthm}
 \usepackage{makecell}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+\usepackage{xcolor}
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor={blue!25!black},  % for TOC
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\setlength{\parindent}{0em}
 
 \title{\LaTeX~CheatSheet}
 \author{Sven Eberth}
 \date{\today}
 
-
 \begin{document}
     \maketitle
     \tableofcontents
     \newpage
-
-
-    \section{Math}\label{sec:math}
+	\hypersetup{linkcolor=red}  % after TOC
+	
+	\section{Math}\label{sec:math}
 		\subsection{Symbols}
 			\subsubsection{Simple}
 		    \[ \mathbb{N R Z Q} \ldots \]
@@ -41,15 +50,59 @@
 
     \section{Table}\label{sec:table}
 		\subsection{Muliline Cells}
-		\ldots with package \textit{makecell}
-		
-		\begin{tabular}{cl}
-			A		& B  \\
-			\hline
-			C		& \makecell[tl]{D \\ E \\ F} \\
-			\hline
-			G		& \makecell[tr]{H \\ I}
-	    \end{tabular}
+			\ldots with package \textit{makecell}
+			
+			\begin{tabular}{cl}
+				A		& B  \\
+				\hline
+				C		& \makecell[tl]{D \\ E \\ F} \\
+				\hline
+				G		& \makecell[tr]{H \\ I}
+		    \end{tabular}
+	    
+	    \subsection{In enumerate env}
+		    	... without text in first line.
+			\newcommand{\makeTable}[0]{
+				\begin{tabular}{l | l}
+					A & B \\
+					C & D \\
+					E & F
+				\end{tabular}				
+			}	    
+		    
+		    \begin{enumerate}
+		    		\item
+		    			\makeTable
+	
+		    			This sucks :(
+		    			
+		    		\item
+		    			\adjustbox{valign=t}{
+		    				\makeTable
+		    			}
+	
+		    			This is better :|
+	    			
+		    			
+		    		\item
+					\begin{adjustbox}{valign=t, tabular=l|l}
+						A & B \\
+						C & D \\
+						E & F
+					\end{adjustbox}
+					
+					This is great :)
+		    \end{enumerate}
+	    
+	    \subsection{More space}
+		    {
+				\setlength\extrarowheight{5ex}
+				\makeTable
+			}
+			\\[\baselineskip]
+			It's scoped. This is normal again:\\
+			\makeTable
+	    
 	    
 	\newpage
 	\section{Typography}\label{sec:typo}
@@ -63,7 +116,7 @@
 				And "quiet" very 'primitive'.
 			\end{otherlanguage}
 
-			\mbox{}\\
+			\vspace{\baselineskip}			
 			\textbf{German:}\\
 			\begin{otherlanguage}{ngerman}
 				This is \glqq some quoted text\grqq. \\
@@ -72,7 +125,40 @@
 				And some "<French quotes">. \\
 				And "quiet" very 'primitive'.
 			\end{otherlanguage}
+	    
+	    
+	\section{Layout}\label{sec:layout}
+		\subsection{Space}
+			Add extra
+			
+			\vspace{2\baselineskip}
+			
+			space.
+			
+		\subsection{Height linebreaks}
+			AAAA \\
+			AAAA \\[.1ex]
+			AAAA \\[1ex]			
+			AAAA \\[2ex]			
+			AAAA \\[5ex]				
+			AAAA \\[1.5cm]		
+			AAAA
 
+		\subsection{References}
+			\label{theLabel}
+			simple reference: \ref{theLabel} \\
+			hyperref: \hyperref[theLabel]{the Reference} \\
+			href: \href{https://github.com}{GitHub.com}
 
+	\section{Enumerate}\label{sec:enumerate}
+		\subsection{Skip item (manipulate counter)}
+		\begin{enumerate}
+			\item First
+			\addtocounter{enumi}{1}
+			\item Third
+			\item \Roman{enumi}.
+			\setcounter{enumi}{41}
+			\item And now? \theenumi!
+		\end{enumerate}
 
 \end{document}
